@@ -1,23 +1,31 @@
 <h3>Create an Account</h3>
 <div>
   <form class="ui form" (ngSubmit)="onSubmit()" [formGroup]="authForm">
-    <div class="field">
-      <label>Username:</label>
-      <input type="text" formControlName="username" />
+    <app-input
+      inpType="text"
+      label="Username"
+      [control]="authForm.controls.username"
+    ></app-input>
+    <!-- {{ authForm.controls.username.errors | json }} -->
+    <app-input
+      inpType="password"
+      label="Password"
+      [control]="authForm.controls.password"
+    ></app-input>
+    <app-input
+      inpType="password"
+      label="Password confirmation"
+      [control]="authForm.controls.passwordConfirmation"
+    >
+    </app-input>
+
+    <div class="ui red basic label" *ngIf="authForm.errors">
+      <p *ngIf="authForm.errors?.['passwords_are_different']"></p>
     </div>
-    {{ authForm.controls.username.errors | json }}
-    <div class="field">
-      <label>Password:</label>
-      <input type="text" formControlName="password" />
+    <div>
+      <button class="ui submit button primary">Submit</button>
     </div>
-    {{ authForm.controls.password.errors | json }}
-    <div class="field">
-      <label>Password again:</label>
-      <input type="text" formControlName="passwordConfirm" />
-    </div>
-    {{ authForm.controls.passwordConfirm.errors | json }}
-    <hr />
-    <button class="ui submit button primary">Submit</button>
   </form>
   {{ authForm.errors | json }}
+  <!-- <p>Authform.valid = {{ authForm.valid }}</p> -->
 </div>

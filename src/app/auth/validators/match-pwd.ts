@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
 export class MatchPwd implements Validator {
   validate(fGrp: AbstractControl) {
     const pwd1 = fGrp.value['password'];
-    const pwd2 = fGrp.value['passwordConfirm'];
+    const pwd2 = fGrp.value['passwordConfirmation'];
 
     if (pwd1 !== pwd2) {
-      return { 'passwords are different': true };
+      return { passwords_are_different: true };
     } else {
       return null;
     }
